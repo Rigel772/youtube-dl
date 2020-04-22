@@ -1,3 +1,45 @@
+Application : youtube-dl
+
+Documentation: rg3/youtube-dl
+
+Download Multiple Courses At Once without typing much.
+
+Install from repository
+Create folder for courses eg pluralsight in home dir, in that folder:
+create youtube-dl.conf file
+creatte batch-file.txt
+run from this folder with command:
+
+youtube-dl --config-location /home/<user>/pluralsight
+
+put the following lines in youtube-dl.conf in created dir
+
+    -u <Username>
+    -p <Password>
+    -i
+    -c
+    --no-warnings
+    --console-title
+    --batch-file='batch-file.txt'
+    --max-sleep-interval 80
+    --min-sleep-interval 60
+    -o '%(playlist_title)s/%(chapter_number)s - %(chapter)s/%(playlist_index)s-%(title)s.%(ext)s'
+    -f 'best[height<=720]/worst[height>720]'
+
+Put batch-file.txt into created dir
+
+    https://app.pluralsight.com/library/courses/project-2016-business-professionals
+    https://app.pluralsight.com/library/courses/moving-technical-professional-management
+    https://app.pluralsight.com/library/courses/it-outsourcing-running-initiative
+
+
+
+Now all your courses will be downloaded into your dir
+
+Important: Pluralsight may block your account if you download too many courses at once. 3–5 is a good size if the course size is average.
+
+
+
 [![Build Status](https://travis-ci.org/ytdl-org/youtube-dl.svg?branch=master)](https://travis-ci.org/ytdl-org/youtube-dl)
 
 youtube-dl - download videos from youtube.com or other video platforms
